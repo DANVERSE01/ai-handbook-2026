@@ -3,495 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Adel — AI Operator's Handbook 2026</title>
-    <meta name="description" content="دليل ورك شوب الذكاء الاصطناعي الاحترافي - محمد عادل 2026">
-    
-    <!-- Fonts -->
+    <title>Mohamed Adel — AI Operator's Handbook 2026 | الدليل الشامل</title>
+    <meta name="description" content="دليل محمد عادل الشامل للذكاء الاصطناعي 2026 - GPT-5.4, Claude Opus 4.6, Gemini 3.1 Pro, Sora 2, Veo 3.1, Flux 2 Pro">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-
     <style>
         :root {
             --bg-dark: #050505;
             --bg-card: #0f0f0f;
+            --bg-hover: #1a1a1a;
             --accent-primary: #987185;
             --accent-secondary: #D6AA9F;
+            --accent-tertiary: #E9D5B7;
             --text-main: #F4E2D1;
-            --text-muted: rgba(244, 226, 209, 0.6);
-            --border-color: rgba(244, 226, 209, 0.1);
+            --text-muted: rgba(244, 226, 209, 0.65);
+            --border-color: rgba(244, 226, 209, 0.08);
+            --border-hover: rgba(244, 226, 209, 0.15);
             --font-ar: 'Cairo', sans-serif;
             --font-en: 'Plus Jakarta Sans', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-ar);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .glass-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-card:hover {
-            border-color: var(--accent-primary);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: var(--bg-dark);
-            font-weight: 700;
-            padding: 12px 24px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
-        }
-
-        .tab-btn {
-            padding: 10px 20px;
-            border-radius: 10px;
-            color: var(--text-muted);
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .tab-btn.active {
-            background: rgba(152, 113, 133, 0.15);
-            color: var(--accent-primary);
-            border: 1px solid var(--accent-primary);
-        }
-
-        .skill-badge {
-            font-size: 0.75rem;
-            padding: 4px 12px;
-            border-radius: 100px;
-            background: rgba(244, 226, 209, 0.05);
-            border: 1px solid var(--border-color);
-        }
-
-        .prompt-box {
-            background: #000;
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            font-family: var(--font-mono);
-            position: relative;
-        }
-
-        .copy-success {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #10b981;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-ar); line-height: 1.65; overflow-x: hidden; }
+        .glass-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card:hover { border-color: var(--border-hover); background: var(--bg-hover); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(152, 113, 133, 0.15); }
+        .gradient-text { background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .btn-primary { background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); color: var(--bg-dark); font-weight: 700; padding: 14px 28px; border-radius: 12px; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .btn-primary:hover { opacity: 0.9; transform: scale(1.03); box-shadow: 0 10px 30px rgba(152, 113, 133, 0.25); }
+        .btn-secondary { padding: 12px 24px; border: 1.5px solid var(--border-hover); border-radius: 12px; background: transparent; color: var(--text-main); cursor: pointer; transition: all 0.3s ease; font-weight: 600; }
+        .btn-secondary:hover { background: rgba(152, 113, 133, 0.1); border-color: var(--accent-primary); }
+        .tab-btn { padding: 10px 18px; border-radius: 10px; color: var(--text-muted); transition: all 0.3s ease; white-space: nowrap; background: transparent; border: 1px solid transparent; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: rgba(152, 113, 133, 0.15); color: var(--accent-primary); border: 1px solid var(--accent-primary); }
+        .skill-badge { font-size: 0.7rem; padding: 5px 12px; border-radius: 100px; background: rgba(244, 226, 209, 0.08); border: 1px solid var(--border-color); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .skill-badge.new { background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3); }
+        .skill-badge.pro { background: rgba(152, 113, 133, 0.15); color: var(--accent-primary); border-color: rgba(152, 113, 133, 0.3); }
+        .skill-badge.advanced { background: rgba(233, 213, 183, 0.15); color: var(--accent-tertiary); border-color: rgba(233, 213, 183, 0.3); }
+        .prompt-box { background: #000; border: 1px solid var(--border-color); border-radius: 14px; font-family: var(--font-mono); position: relative; overflow: hidden; }
+        .prompt-code { padding: 16px; font-size: 0.85rem; line-height: 1.7; color: #10b981; white-space: pre-wrap; word-break: break-word; max-height: 400px; overflow-y: auto; }
+        .copy-btn { position: absolute; top: 12px; left: 12px; background: rgba(152, 113, 133, 0.2); border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; transition: all 0.3s ease; font-weight: 600; }
+        .copy-btn:hover { background: rgba(152, 113, 133, 0.35); border-color: var(--accent-primary); }
+        .copy-btn.copied { background: rgba(16, 185, 129, 0.2); color: #10b981; border-color: rgba(16, 185, 129, 0.4); }
+        .tool-table { width: 100%; border-collapse: collapse; }
+        .tool-table th { background: rgba(152, 113, 133, 0.08); padding: 14px 16px; text-align: right; font-weight: 700; border-bottom: 1px solid var(--border-color); color: var(--accent-secondary); }
+        .tool-table td { padding: 14px 16px; border-bottom: 1px solid var(--border-color); }
+        .tool-table tr:hover td { background: rgba(152, 113, 133, 0.05); }
+        .tool-name { font-weight: 700; color: var(--text-main); }
+        .tool-desc { color: var(--text-muted); font-size: 0.9rem; }
+        .model-tier { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .model-tier.frontier { background: rgba(233, 213, 183, 0.15); color: var(--accent-tertiary); }
+        .model-tier.production { background: rgba(152, 113, 133, 0.15); color: var(--accent-primary); }
+        ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-dark); }
         ::-webkit-scrollbar-thumb { background: var(--accent-primary); border-radius: 10px; }
-
-        .section-title {
-            font-family: var(--font-en);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            h1 { font-size: 2.5rem !important; }
-        }
+        .section-title { font-family: var(--font-en); font-weight: 900; letter-spacing: -0.02em; }
+        @media (max-width: 768px) { .container { padding: 0 20px; } h1 { font-size: 2.2rem !important; } }
+        .model-comparison { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+        .model-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; transition: all 0.3s ease; }
+        .model-card:hover { border-color: var(--accent-primary); box-shadow: 0 10px 30px rgba(152, 113, 133, 0.15); }
+        .model-name { font-weight: 800; font-size: 1.1rem; margin-bottom: 8px; color: var(--text-main); }
+        .model-spec { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px; display: flex; justify-content: space-between; }
+        .section-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin: 40px 0; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
-
-    <!-- Header / Hero -->
     <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-primary opacity-10 blur-[120px] rounded-full"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-secondary opacity-10 blur-[120px] rounded-full"></div>
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-primary opacity-5 blur-[150px] rounded-full"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-secondary opacity-5 blur-[150px] rounded-full"></div>
         </div>
-
-        <div class="z-10 max-w-4xl">
-            <div class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
-                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span class="text-sm font-medium tracking-wider uppercase opacity-80">AI Workshop 2026 — Version 4.0</span>
+        <div class="z-10 max-w-5xl">
+            <div class="mb-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md">
+                <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-sm font-bold tracking-wider uppercase opacity-75">AI Handbook 2026 — Version 5.0 FULLY UPDATED</span>
             </div>
-            <h1 class="text-6xl md:text-8xl font-black mb-8 leading-tight">
+            <h1 class="text-7xl md:text-8xl font-black mb-6 leading-tight">
                 <span class="gradient-text">MOHAMED ADEL</span><br>
-                <span class="section-title">AI HANDBOOK</span>
+                <span class="section-title text-white">AI OPERATOR'S HANDBOOK</span>
             </h1>
-            <p class="text-xl md:text-2xl text-muted max-w-2xl mx-auto mb-12 font-light">
-                الدليل الشامل لإتقان أدوات الذكاء الاصطناعي، بناء الأنظمة المؤتمتة، وصناعة المحتوى الاحترافي في عصر الوكلاء الذكيين.
+            <p class="text-lg md:text-xl text-text-muted max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+                الدليل الشامل والمحدث لإتقان أحدث موديلات الذكاء الاصطناعي: GPT-5.4 و Claude Opus 4.6 و Gemini 3.1 Pro، بناء الأتمتة الذكية، وصناعة المحتوى الاحترافي مع Sora 2 و Veo 3.1 و Flux 2 Pro.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#skills" class="btn-primary flex items-center gap-2">
+                <button class="btn-primary flex items-center gap-2" onclick="document.getElementById('models').scrollIntoView({behavior: 'smooth'})">
                     <i data-lucide="zap" class="w-5 h-5"></i>
-                    استكشف المهارات
-                </a>
-                <a href="#tools" class="px-8 py-3 rounded-12 border border-white/20 hover:bg-white/5 transition-all">
-                    الأدوات المحدثة
-                </a>
+                    استكشف الموديلات
+                </button>
+                <button class="btn-secondary flex items-center gap-2" onclick="document.getElementById('tools').scrollIntoView({behavior: 'smooth'})">
+                    <i data-lucide="tool" class="w-5 h-5"></i>
+                    الأدوات المتقدمة
+                </button>
             </div>
         </div>
-        
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
             <i data-lucide="chevron-down" class="w-8 h-8"></i>
         </div>
     </header>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div class="max-w-2xl">
-                <h2 class="text-4xl font-bold mb-4">المهارات الأساسية <span class="text-accent-primary">2026</span></h2>
-                <p class="text-text-muted">أهم 50 مهارة يحتاجها مشغل الذكاء الاصطناعي للتميز في سوق العمل الحالي.</p>
-            </div>
-            <div class="flex gap-2 overflow-x-auto pb-2 w-full md:w-auto">
-                <button class="tab-btn active" onclick="filterSkills('all')">الكل</button>
-                <button class="tab-btn" onclick="filterSkills('prompt')">البرومبت</button>
-                <button class="tab-btn" onclick="filterSkills('agent')">الوكلاء</button>
-                <button class="tab-btn" onclick="filterSkills('media')">الميديا</button>
-                <button class="tab-btn" onclick="filterSkills('dev')">التطوير</button>
-            </div>
+    <section id="models" class="py-32 container mx-auto px-4">
+        <div class="mb-20">
+            <h2 class="text-5xl font-black mb-4">الموديلات الحدودية <span class="gradient-text">2026</span></h2>
+            <p class="text-text-muted text-lg max-w-2xl">أحدث وأقوى موديلات الذكاء الاصطناعي المتاحة الآن - مقارنة شاملة بين الخيارات الأفضل.</p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="skills-grid">
-            <!-- Skill 1 -->
-            <div class="glass-card p-8 skill-item" data-category="prompt">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="p-3 bg-accent-primary/10 rounded-xl text-accent-primary">
-                        <i data-lucide="terminal" class="w-6 h-6"></i>
+        <div class="mb-16">
+            <h3 class="text-2xl font-bold mb-8 text-accent-tertiary">الموديلات الحدودية (Frontier)</h3>
+            <div class="model-comparison">
+                <div class="model-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <div><div class="model-name">GPT-5.4</div><span class="model-tier frontier">OpenAI</span></div>
+                        <span class="skill-badge pro">الأقوى</span>
                     </div>
-                    <span class="skill-badge">Advanced</span>
-                </div>
-                <h3 class="text-xl font-bold mb-3">هندسة البرومبت المتقدمة (Chain-of-Thought)</h3>
-                <p class="text-text-muted text-sm mb-6">إتقان تقنيات التفكير المتسلسل للموديلات لضمان نتائج دقيقة في المهام المعقدة والمنطقية.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-[10px] uppercase tracking-widest opacity-40">Tools: Claude 3.7, GPT-5</span>
-                </div>
-            </div>
-
-            <!-- Skill 2 -->
-            <div class="glass-card p-8 skill-item" data-category="agent">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="p-3 bg-accent-primary/10 rounded-xl text-accent-primary">
-                        <i data-lucide="bot" class="w-6 h-6"></i>
+                    <div class="space-y-3">
+                        <div class="model-spec"><span>السياق:</span><span class="font-mono">1.05M</span></div>
+                        <div class="model-spec"><span>الإخراج:</span><span class="font-mono">128K</span></div>
+                        <div class="model-spec"><span>التخصص:</span><span>التحليل الشامل</span></div>
+                        <p class="text-sm text-text-muted mt-4">الموديل الأقوى في التفكير المنطقي المعقد والتحليل الاستراتيجي. مثالي للمهام التي تتطلب دقة عالية.</p>
                     </div>
-                    <span class="skill-badge">New</span>
                 </div>
-                <h3 class="text-xl font-bold mb-3">بناء الوكلاء الذكيين (Agentic Workflows)</h3>
-                <p class="text-text-muted text-sm mb-6">تصميم أنظمة ذكاء اصطناعي قادرة على اتخاذ القرارات وتنفيذ المهام بشكل مستقل تماماً.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-[10px] uppercase tracking-widest opacity-40">Tools: CrewAI, LangGraph</span>
-                </div>
-            </div>
-
-            <!-- Skill 3 -->
-            <div class="glass-card p-8 skill-item" data-category="media">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="p-3 bg-accent-primary/10 rounded-xl text-accent-primary">
-                        <i data-lucide="image" class="w-6 h-6"></i>
+                <div class="model-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <div><div class="model-name">Claude Opus 4.6</div><span class="model-tier frontier">Anthropic</span></div>
+                        <span class="skill-badge pro">البرمجة</span>
                     </div>
-                    <span class="skill-badge">Creative</span>
-                </div>
-                <h3 class="text-xl font-bold mb-3">توليد الصور التجارية (Flux 1.1 Pro)</h3>
-                <p class="text-text-muted text-sm mb-6">إنتاج صور منتجات وبوسترات احترافية بدقة سينمائية وتناسق كامل مع هوية البراند.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-[10px] uppercase tracking-widest opacity-40">Tools: Flux, Midjourney v7</span>
-                </div>
-            </div>
-
-            <!-- Skill 4 -->
-            <div class="glass-card p-8 skill-item" data-category="dev">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="p-3 bg-accent-primary/10 rounded-xl text-accent-primary">
-                        <i data-lucide="code-2" class="w-6 h-6"></i>
+                    <div class="space-y-3">
+                        <div class="model-spec"><span>السياق:</span><span class="font-mono">200K / 1M</span></div>
+                        <div class="model-spec"><span>الإخراج:</span><span class="font-mono">32K</span></div>
+                        <div class="model-spec"><span>التخصص:</span><span>الوكلاء الذكيين</span></div>
+                        <p class="text-sm text-text-muted mt-4">الأفضل للبرمجة المعقدة والوكلاء الذكية. يدعم Claude Code و MCP Protocol للأتمتة المتقدمة.</p>
                     </div>
-                    <span class="skill-badge">No-Code</span>
                 </div>
-                <h3 class="text-xl font-bold mb-3">تطوير التطبيقات بالذكاء الاصطناعي</h3>
-                <p class="text-text-muted text-sm mb-6">بناء تطبيقات ويب كاملة باستخدام v0 و Cursor دون الحاجة لخبرة برمجية عميقة.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-[10px] uppercase tracking-widest opacity-40">Tools: v0.dev, Cursor, Replit</span>
-                </div>
-            </div>
-
-            <!-- Skill 5 -->
-            <div class="glass-card p-8 skill-item" data-category="media">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="p-3 bg-accent-primary/10 rounded-xl text-accent-primary">
-                        <i data-lucide="video" class="w-6 h-6"></i>
+                <div class="model-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <div><div class="model-name">Gemini 3.1 Pro</div><span class="model-tier frontier">Google</span></div>
+                        <span class="skill-badge new">متعدد الوسائط</span>
                     </div>
-                    <span class="skill-badge">Pro</span>
-                </div>
-                <h3 class="text-xl font-bold mb-3">صناعة الفيديو السينمائي (Kling 3.0)</h3>
-                <p class="text-text-muted text-sm mb-6">تحويل النصوص والصور إلى مقاطع فيديو واقعية بجودة هوليوودية لاستخدامها في الإعلانات.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-[10px] uppercase tracking-widest opacity-40">Tools: Kling, Runway Gen-4</span>
-                </div>
-            </div>
-
-            <!-- Skill 6 -->
-            <div class="glass-card p-8 skill-item" data-category="agent">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="p-3 bg-accent-primary/10 rounded-xl text-accent-primary">
-                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    <div class="space-y-3">
+                        <div class="model-spec"><span>السياق:</span><span class="font-mono">1.04M</span></div>
+                        <div class="model-spec"><span>الإخراج:</span><span class="font-mono">65K</span></div>
+                        <div class="model-spec"><span>التخصص:</span><span>الصوت والفيديو</span></div>
+                        <p class="text-sm text-text-muted mt-4">الوحيد بدعم أصلي للصوت والفيديو. مثالي للتطبيقات متعددة الوسائط والمعالجة الفورية.</p>
                     </div>
-                    <span class="skill-badge">Automation</span>
                 </div>
-                <h3 class="text-xl font-bold mb-3">أتمتة العمليات (n8n & Make)</h3>
-                <p class="text-text-muted text-sm mb-6">ربط تطبيقاتك المفضلة ببعضها وبناء سير عمل ذكي يوفر عليك ساعات من العمل اليدوي.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-[10px] uppercase tracking-widest opacity-40">Tools: n8n, Make.com</span>
+                <div class="model-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <div><div class="model-name">Llama 4 Maverick</div><span class="model-tier frontier">Meta</span></div>
+                        <span class="skill-badge advanced">مفتوح المصدر</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="model-spec"><span>السياق:</span><span class="font-mono">1M</span></div>
+                        <div class="model-spec"><span>الاستضافة:</span><span>ذاتية / API</span></div>
+                        <div class="model-spec"><span>التخصص:</span><span>التكلفة المنخفضة</span></div>
+                        <p class="text-sm text-text-muted mt-4">موديل مفتوح المصدر قابل للاستضافة الذاتية. أفضل خيار للأنظمة عالية الإنتاجية برسوم منخفضة.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tools Section -->
-    <section id="tools" class="py-24 bg-white/[0.02]">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">ترسانة الأدوات <span class="text-accent-primary">2026</span></h2>
-                <p class="text-text-muted max-w-xl mx-auto">الأدوات التي نستخدمها فعلياً في الورك شوب لتحقيق نتائج احترافية.</p>
-            </div>
+    <div class="section-divider"></div>
 
+    <section id="tools" class="py-32 container mx-auto px-4">
+        <div class="mb-20">
+            <h2 class="text-5xl font-black mb-4">ترسانة الأدوات <span class="gradient-text">2026</span></h2>
+            <p class="text-text-muted text-lg max-w-2xl">أحدث الأدوات والمنصات المستخدمة في الورك شوب لتحقيق نتائج احترافية.</p>
+        </div>
+        <div class="mb-8 flex flex-wrap gap-2 pb-4 border-b border-border-color">
+            <button class="tab-btn active" onclick="switchToolTab('llm', this)">موديلات اللغة</button>
+            <button class="tab-btn" onclick="switchToolTab('video', this)">توليد الفيديو</button>
+            <button class="tab-btn" onclick="switchToolTab('image', this)">توليد الصور</button>
+            <button class="tab-btn" onclick="switchToolTab('automation', this)">الأتمتة</button>
+            <button class="tab-btn" onclick="switchToolTab('agents', this)">الوكلاء الذكية</button>
+        </div>
+        <div id="tab-llm" class="tool-panel active">
             <div class="overflow-x-auto">
-                <table class="w-full text-right border-collapse">
-                    <thead>
-                        <tr class="border-b border-white/10">
-                            <th class="py-6 px-4 font-bold text-accent-secondary">الأداة</th>
-                            <th class="py-6 px-4 font-bold text-accent-secondary">التخصص الرئيسي</th>
-                            <th class="py-6 px-4 font-bold text-accent-secondary">أفضل استخدام</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-white/5">
-                        <tr class="hover:bg-white/[0.02] transition-colors">
-                            <td class="py-6 px-4 font-bold">Claude 3.7 Sonnet</td>
-                            <td class="py-6 px-4 text-text-muted">البرمجة والمنطق</td>
-                            <td class="py-6 px-4">أفضل موديل لكتابة الكود وتحليل البيانات المعقدة.</td>
-                        </tr>
-                        <tr class="hover:bg-white/[0.02] transition-colors">
-                            <td class="py-6 px-4 font-bold">Flux 1.1 Pro Ultra</td>
-                            <td class="py-6 px-4 text-text-muted">توليد الصور</td>
-                            <td class="py-6 px-4">دقة متناهية في التفاصيل والنصوص داخل الصور.</td>
-                        </tr>
-                        <tr class="hover:bg-white/[0.02] transition-colors">
-                            <td class="py-6 px-4 font-bold">Kling 3.0</td>
-                            <td class="py-6 px-4 text-text-muted">توليد الفيديو</td>
-                            <td class="py-6 px-4">أقوى محرك فيديو حالياً للحركات الواقعية.</td>
-                        </tr>
-                        <tr class="hover:bg-white/[0.02] transition-colors">
-                            <td class="py-6 px-4 font-bold">v0.dev</td>
-                            <td class="py-6 px-4 text-text-muted">تطوير الـ UI</td>
-                            <td class="py-6 px-4">تحويل الوصف إلى واجهات مستخدم جاهزة للبرمجة.</td>
-                        </tr>
-                        <tr class="hover:bg-white/[0.02] transition-colors">
-                            <td class="py-6 px-4 font-bold">Perplexity Pro</td>
-                            <td class="py-6 px-4 text-text-muted">البحث الذكي</td>
-                            <td class="py-6 px-4">البحث في الإنترنت مع مصادر موثقة وتلخيص دقيق.</td>
-                        </tr>
+                <table class="tool-table">
+                    <thead><tr><th>الأداة</th><th>التخصص</th><th>الاستخدام الأمثل</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tool-name">GPT-5.4</td><td class="tool-desc">التحليل والتفكير</td><td class="tool-desc">التحليل الاستراتيجي والمهام المعقدة والبحث العميق.</td></tr>
+                        <tr><td class="tool-name">Claude Opus 4.6</td><td class="tool-desc">البرمجة والوكلاء</td><td class="tool-desc">كتابة الكود المعقد وبناء الوكلاء الذكية والأتمتة.</td></tr>
+                        <tr><td class="tool-name">Gemini 3.1 Pro</td><td class="tool-desc">متعدد الوسائط</td><td class="tool-desc">معالجة الصوت والفيديو والصور مع النصوص.</td></tr>
+                        <tr><td class="tool-name">Llama 4 Maverick</td><td class="tool-desc">مفتوح المصدر</td><td class="tool-desc">الاستضافة الذاتية والمشاريع عالية الإنتاجية.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="tab-video" class="tool-panel hidden">
+            <div class="overflow-x-auto">
+                <table class="tool-table">
+                    <thead><tr><th>الأداة</th><th>التخصص</th><th>الاستخدام الأمثل</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tool-name">Sora 2</td><td class="tool-desc">الفيديو الطويل</td><td class="tool-desc">مقاطع فيديو طويلة (حتى 60 ثانية) بجودة سينمائية.</td></tr>
+                        <tr><td class="tool-name">Google Veo 3.1</td><td class="tool-desc">الفيديو المتقدم</td><td class="tool-desc">أفضل جودة فيديو حالياً مع تحكم دقيق في الحركة.</td></tr>
+                        <tr><td class="tool-name">Runway Gen-4.5</td><td class="tool-desc">اتساق الشخصيات</td><td class="tool-desc">فيديوهات سردية مع شخصيات متسقة عبر المشاهد.</td></tr>
+                        <tr><td class="tool-name">Kling 3.0</td><td class="tool-desc">التحكم بالحركة</td><td class="tool-desc">إعلانات وريلز بحركات دقيقة وتحكم Motion Brush.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="tab-image" class="tool-panel hidden">
+            <div class="overflow-x-auto">
+                <table class="tool-table">
+                    <thead><tr><th>الأداة</th><th>التخصص</th><th>الاستخدام الأمثل</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tool-name">Flux 2 Pro</td><td class="tool-desc">الدقة العالية</td><td class="tool-desc">صور تجارية بدقة متناهية والنصوص داخل الصور.</td></tr>
+                        <tr><td class="tool-name">Midjourney v8</td><td class="tool-desc">الفن والتصميم</td><td class="tool-desc">صور فنية وتصاميم إبداعية بجودة عالية.</td></tr>
+                        <tr><td class="tool-name">Ideogram 3.0</td><td class="tool-desc">النص في الصور</td><td class="tool-desc">نصوص قابلة للقراءة داخل الصور للبوسترات والإعلانات.</td></tr>
+                        <tr><td class="tool-name">DALL-E 4</td><td class="tool-desc">التكامل مع GPT</td><td class="tool-desc">توليد صور مباشر من ChatGPT مع سياق كامل.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="tab-automation" class="tool-panel hidden">
+            <div class="overflow-x-auto">
+                <table class="tool-table">
+                    <thead><tr><th>الأداة</th><th>التخصص</th><th>الاستخدام الأمثل</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tool-name">n8n</td><td class="tool-desc">الأتمتة المتقدمة</td><td class="tool-desc">سير عمل معقد قابل للاستضافة الذاتية بدون حدود.</td></tr>
+                        <tr><td class="tool-name">Make.com</td><td class="tool-desc">التكاملات</td><td class="tool-desc">1500+ تطبيق مع واجهة بصرية سهلة الاستخدام.</td></tr>
+                        <tr><td class="tool-name">Zapier AI</td><td class="tool-desc">البساطة</td><td class="tool-desc">سير عمل بسيطة للمستخدمين غير التقنيين.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="tab-agents" class="tool-panel hidden">
+            <div class="overflow-x-auto">
+                <table class="tool-table">
+                    <thead><tr><th>الأداة</th><th>التخصص</th><th>الاستخدام الأمثل</th></tr></thead>
+                    <tbody>
+                        <tr><td class="tool-name">LangGraph</td><td class="tool-desc">الوكلاء المتقدمة</td><td class="tool-desc">بناء وكلاء ذكية معقدة مع تحكم كامل على سير العمل.</td></tr>
+                        <tr><td class="tool-name">CrewAI</td><td class="tool-desc">فرق الوكلاء</td><td class="tool-desc">تنسيق عدة وكلاء للعمل معاً على مشاريع معقدة.</td></tr>
+                        <tr><td class="tool-name">AutoGen v2</td><td class="tool-desc">الحوارات الذكية</td><td class="tool-desc">وكلاء تتحاور مع بعضها لحل المشاكل المعقدة.</td></tr>
+                        <tr><td class="tool-name">Relevance AI</td><td class="tool-desc">بدون كود</td><td class="tool-desc">بناء وكلاء بدون كود مع واجهة بصرية متقدمة.</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 
-    <!-- Prompts Section -->
-    <section id="prompts" class="py-24 container mx-auto px-4">
-        <div class="mb-16">
-            <h2 class="text-4xl font-bold mb-4">مكتبة البرومبتات <span class="text-accent-primary">Master Prompts</span></h2>
-            <p class="text-text-muted">انسخ هذه البرومبتات المجهزة بعناية لتحصل على أفضل أداء من الموديلات.</p>
+    <div class="section-divider"></div>
+
+    <section id="prompts" class="py-32 container mx-auto px-4">
+        <div class="mb-20">
+            <h2 class="text-5xl font-black mb-4">مكتبة البرومبتات <span class="gradient-text">Master Prompts</span></h2>
+            <p class="text-text-muted text-lg max-w-2xl">برومبتات متقدمة مجهزة بعناية لتحقيق أفضل أداء من الموديلات الحديثة.</p>
         </div>
-
-        <div class="space-y-6">
-            <!-- Prompt 1 -->
-            <div class="glass-card p-6 md:p-8">
+        <div class="space-y-8">
+            <div class="glass-card p-8">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-                    <div>
-                        <h3 class="text-xl font-bold mb-1">برومبت الهوية المهنية (Expert Persona)</h3>
-                        <p class="text-sm text-text-muted">يستخدم لضبط شخصية الذكاء الاصطناعي كخبير في مجال محدد.</p>
-                    </div>
-                    <button onclick="copyPrompt('prompt-1', this)" class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg hover:bg-white/10 transition-all border border-white/10">
-                        <i data-lucide="copy" class="w-4 h-4"></i>
-                        <span>نسخ البرومبت</span>
-                    </button>
+                    <div><h3 class="text-2xl font-bold mb-2">برومبت التفكير الوكيلي (Agentic Reasoning)</h3><p class="text-sm text-text-muted">للمهام المعقدة التي تتطلب تفكيراً متعدد الخطوات واتخاذ قرارات مستقلة.</p></div>
+                    <button onclick="copyPrompt('prompt-1', this)" class="btn-secondary flex items-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i><span>نسخ</span></button>
                 </div>
-                <div class="prompt-box p-6 overflow-hidden">
-                    <div id="copy-msg-1" class="copy-success">تم النسخ!</div>
-                    <pre id="prompt-1" class="text-sm text-accent-secondary whitespace-pre-wrap font-mono">## IDENTITY
-You are [Name], a [specific expert role] specializing in [domain/niche].
-You work with [target audience description].
+                <div class="prompt-box"><pre class="prompt-code" id="prompt-1">You are an autonomous AI agent tasked with [GOAL].
 
-## COMMUNICATION STYLE
-- Tone: [e.g., direct, warm, professional, conversational]
-- Language: [Arabic / English]
-- Format preference: [e.g., concise bullet points]
-- Avoid: [filler phrases, unnecessary caveats]
+## REASONING FRAMEWORK
+1. Analyze using chain-of-thought reasoning
+2. Break down into sub-tasks
+3. Execute with tool use
+4. Verify results
+5. Adapt based on feedback
 
-## GOAL
-Provide high-level strategic advice and execution steps for [Project Name].</pre>
-                </div>
+## TOOLS AVAILABLE
+- Web search for current information
+- Code execution for complex calculations
+- File operations for data processing
+- External API calls for integrations
+
+## DECISION MAKING
+- Always explain your reasoning
+- Consider multiple approaches
+- Choose the most efficient path
+- Document all decisions
+
+## OUTPUT FORMAT
+- Problem Analysis
+- Proposed Solution
+- Execution Steps
+- Verification Results
+- Alternative Approaches</pre></div>
             </div>
-
-            <!-- Prompt 2 -->
-            <div class="glass-card p-6 md:p-8">
+            <div class="glass-card p-8">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-                    <div>
-                        <h3 class="text-xl font-bold mb-1">برومبت بناء المواقع (Website Architect)</h3>
-                        <p class="text-sm text-text-muted">يستخدم مع v0 أو Cursor لبناء هيكل موقع متكامل.</p>
-                    </div>
-                    <button onclick="copyPrompt('prompt-2', this)" class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg hover:bg-white/10 transition-all border border-white/10">
-                        <i data-lucide="copy" class="w-4 h-4"></i>
-                        <span>نسخ البرومبت</span>
-                    </button>
+                    <div><h3 class="text-2xl font-bold mb-2">برومبت نظام RAG (Retrieval-Augmented Generation)</h3><p class="text-sm text-text-muted">للعمل مع قواعد البيانات والمستندات الكبيرة مع ضمان الدقة والمصادر.</p></div>
+                    <button onclick="copyPrompt('prompt-2', this)" class="btn-secondary flex items-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i><span>نسخ</span></button>
                 </div>
-                <div class="prompt-box p-6 overflow-hidden">
-                    <div id="copy-msg-2" class="copy-success">تم النسخ!</div>
-                    <pre id="prompt-2" class="text-sm text-accent-secondary whitespace-pre-wrap font-mono">Build a complete, production-ready website with the following specifications:
+                <div class="prompt-box"><pre class="prompt-code" id="prompt-2">You are a specialized AI assistant with access to a knowledge base.
 
-## PROJECT IDENTITY
-Brand name: [Your brand name]
-Industry: [Your industry]
-Primary audience: [Who visits this site]
+## RETRIEVAL STRATEGY
+1. Understand the user's query deeply
+2. Search for relevant documents/data
+3. Rank results by relevance
+4. Extract key information
+5. Synthesize into coherent response
 
-## VISUAL DESIGN
-Style: [e.g., dark luxury editorial / clean minimal]
-Primary color: [hex code]
-Typography: [Modern Sans-serif]
+## KNOWLEDGE BASE RULES
+- Always cite sources
+- Provide document references
+- Include confidence levels
+- Flag contradictions in sources
+- Update knowledge when new info found
 
-## STRUCTURE
-- Hero section with high-converting CTA
-- Features grid with Lucide icons
-- Testimonials slider
-- Responsive Footer</pre>
+## RESPONSE STRUCTURE
+[Direct Answer]
+[Supporting Evidence from Knowledge Base]
+[Source Citations]
+[Confidence Level: High/Medium/Low]
+[Related Information]
+
+## QUALITY CHECKS
+- Verify information accuracy
+- Cross-reference multiple sources
+- Flag outdated information
+- Suggest alternative sources if needed</pre></div>
+            </div>
+            <div class="glass-card p-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                    <div><h3 class="text-2xl font-bold mb-2">برومبت صناعة المحتوى الاحترافي</h3><p class="text-sm text-text-muted">لكتابة محتوى عالي الجودة متوافق مع هوية البراند والجمهور المستهدف.</p></div>
+                    <button onclick="copyPrompt('prompt-3', this)" class="btn-secondary flex items-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i><span>نسخ</span></button>
                 </div>
+                <div class="prompt-box"><pre class="prompt-code" id="prompt-3">You are a senior content strategist and copywriter.
+
+## BRAND IDENTITY
+Brand Name: [YOUR_BRAND]
+Voice: [TONE: professional/casual/expert/friendly]
+Values: [KEY_VALUES]
+Target Audience: [DEMOGRAPHICS & PSYCHOGRAPHICS]
+
+## CONTENT GUIDELINES
+- Tone: [SPECIFIC_TONE]
+- Style: [SHORT_PUNCHY / DETAILED / STORY_DRIVEN]
+- Length: [WORD_COUNT_TARGET]
+- Keywords: [PRIMARY_KEYWORDS]
+- Avoid: [BANNED_PHRASES]
+
+## STRUCTURE TEMPLATE
+1. Hook (Attention-grabbing opening)
+2. Problem (Audience pain point)
+3. Solution (Your offering)
+4. Benefits (Specific outcomes)
+5. CTA (Clear call to action)
+
+## QUALITY CHECKLIST
+✓ Brand voice consistent
+✓ SEO optimized
+✓ Scannable formatting
+✓ Compelling headlines
+✓ Strong CTA</pre></div>
+            </div>
+            <div class="glass-card p-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                    <div><h3 class="text-2xl font-bold mb-2">برومبت توليد الكود المتقدم</h3><p class="text-sm text-text-muted">لكتابة كود احترافي قابل للصيانة مع أفضل الممارسات والتوثيق الكامل.</p></div>
+                    <button onclick="copyPrompt('prompt-4', this)" class="btn-secondary flex items-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i><span>نسخ</span></button>
+                </div>
+                <div class="prompt-box"><pre class="prompt-code" id="prompt-4">You are a senior software engineer.
+
+## CODE STANDARDS
+- Language: [LANGUAGE]
+- Framework: [FRAMEWORK]
+- Style: [STYLE_GUIDE]
+- Version: [VERSION]
+
+## REQUIREMENTS
+[DETAILED_REQUIREMENTS]
+
+## IMPLEMENTATION RULES
+1. Write clean, readable code
+2. Include comprehensive comments
+3. Add error handling
+4. Follow design patterns
+5. Include unit tests
+6. Document edge cases
+
+## OUTPUT FORMAT
+```[LANGUAGE]
+[CODE]
+```
+
+## DOCUMENTATION
+- Function signatures with types
+- Parameter descriptions
+- Return value documentation
+- Usage examples
+- Error handling explanation</pre></div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 border-t border-white/10 text-center">
+    <footer class="py-16 border-t border-border-color text-center">
         <div class="container mx-auto px-4">
-            <div class="mb-8">
-                <h2 class="text-2xl font-black gradient-text mb-2">MOHAMED ADEL</h2>
-                <p class="text-sm text-text-muted">AI Operator & Creative Director — 2026</p>
+            <div class="mb-12">
+                <h2 class="text-3xl font-black gradient-text mb-2">MOHAMED ADEL</h2>
+                <p class="text-sm text-text-muted">AI Operator & Creative Director — April 2026</p>
             </div>
-            <div class="flex justify-center gap-6 mb-8">
-                <a href="#" class="text-text-muted hover:text-accent-primary transition-colors"><i data-lucide="instagram"></i></a>
-                <a href="#" class="text-text-muted hover:text-accent-primary transition-colors"><i data-lucide="linkedin"></i></a>
-                <a href="#" class="text-text-muted hover:text-accent-primary transition-colors"><i data-lucide="twitter"></i></a>
-            </div>
-            <p class="text-[10px] uppercase tracking-[0.2em] opacity-30">© 2026 All Rights Reserved. Designed for the Future.</p>
+            <p class="text-[11px] uppercase tracking-[0.15em] opacity-40">© 2026 All Rights Reserved. Designed for the Future of AI.</p>
         </div>
     </footer>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
-
-        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
         gsap.from("header h1", { duration: 1.5, y: 50, opacity: 0, ease: "power4.out" });
         gsap.from("header p", { duration: 1.5, y: 30, opacity: 0, ease: "power4.out", delay: 0.3 });
-        gsap.from(".glass-card", {
-            scrollTrigger: {
-                trigger: "#skills",
-                start: "top 80%"
-            },
-            duration: 1,
-            y: 40,
-            opacity: 0,
-            stagger: 0.1,
-            ease: "power3.out"
-        });
-
-        // Skill Filtering Logic
-        function filterSkills(category) {
-            const items = document.querySelectorAll('.skill-item');
-            const buttons = document.querySelectorAll('.tab-btn');
-            
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.innerText.toLowerCase().includes(category) || (category === 'all' && btn.innerText === 'الكل')) {
-                    btn.classList.add('active');
-                }
-            });
-
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    gsap.to(item, { duration: 0.4, scale: 1, opacity: 1, display: 'block' });
-                } else {
-                    gsap.to(item, { duration: 0.4, scale: 0.9, opacity: 0, display: 'none' });
-                }
-            });
+        
+        function switchToolTab(tabName, btn) {
+            document.querySelectorAll('.tool-panel').forEach(panel => { panel.classList.add('hidden'); });
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(button => { button.classList.remove('active'); });
+            btn.classList.add('active');
         }
-
-        // Copy Prompt Logic
+        
         function copyPrompt(id, btn) {
             const text = document.getElementById(id).innerText;
-            const msgId = 'copy-msg-' + id.split('-')[1];
-            const msg = document.getElementById(msgId);
-
             navigator.clipboard.writeText(text).then(() => {
-                msg.style.opacity = '1';
-                const originalContent = btn.innerHTML;
-                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i><span>تم النسخ</span>';
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i><span>تم!</span>';
+                btn.classList.add('copied');
                 lucide.createIcons();
-                
                 setTimeout(() => {
-                    msg.style.opacity = '0';
-                    btn.innerHTML = originalContent;
+                    btn.innerHTML = originalHTML;
+                    btn.classList.remove('copied');
                     lucide.createIcons();
                 }, 2000);
             });
         }
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
     </script>
 </body>
 </html>
